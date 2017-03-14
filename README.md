@@ -7,7 +7,15 @@ but to refactor an existing project with Angular and Material.
 For this project I'm using my web 2 project that made heavy use of jQuery and
 javascript to access a server for a list of students. The project was stylized 
 using Bootstrap and could be interacted with to make changes to the student's 
-information. 
+information. In no way should this refactor change the look or behavior of the 
+original project.
+
+I am only planning on making changes to the following files: 
+<ul>
+<li>index.html</li>
+<li>myScript.js</li>
+<li>sortComparators.js</li>
+</ul>
 
 <hr />
 
@@ -22,13 +30,13 @@ information.
 
 <p><strong>Milestones:</strong></p>
 <ol>
-<li>Download and install WebStorm</li>
-<li>Get a student license of WebStorm</li>
-<li>Get a Git Repo setup</li>
-<li>Make the first commit to Gethub</li>
-<li>Complete Markdown for the AngularProject</li>
-<li>Download jQuery project from c9</li>
-<li>Import project into WebStorm</li>
+<li><strike>Download and install WebStorm</strike></li>
+<li><strike>Get a student license of WebStorm</strike></li>
+<li><strike>Get a Git Repo setup</strike></li>
+<li><strike>Make the first commit to Gethub</strike></li>
+<li><strike>Complete Markdown for the AngularProject</strike></li>
+<li><strike>Download jQuery project from c9</strike></li>
+<li><strike>Import project into WebStorm</strike></li>
 <li>Learn Material</li>
 <li>Breakdown last two milestones into smaller goals</li>
 <li>Convert boostrap to Material</li>
