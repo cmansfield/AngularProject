@@ -183,15 +183,7 @@
             <table class="table table-striped table-bordered" id="table">
                 <thead>
                     <tr>
-                        <th class="sort" id="name">{{textEnum[fieldEnum['name']]}}</th>
-                        <th class="sort" id="startDate">{{textEnum[fieldEnum['startDate']]}}</th>
-                        <th class="sort" id="street">{{textEnum[fieldEnum['street']]}}</th>
-                        <th class="sort" id="city">{{textEnum[fieldEnum['city']]}}</th>
-                        <th class="sort" id="state">{{textEnum[fieldEnum['state']]}}</th>
-                        <th class="sort" id="zip">{{textEnum[fieldEnum['zip']]}}</th>
-                        <th class="sort" id="phone">{{textEnum[fieldEnum['phone']]}}</th>
-                        <th class="sort" id="year">{{textEnum[fieldEnum['year']]}}</th>
-                        <th class="sort" id="id">{{textEnum[fieldEnum['id']]}}</th>
+                        <th class="sort" id="{{x}}" ng-repeat="x in textEnum">{{x}}</th>
                     </tr>
                 </thead>
                 <tbody id="tableArea">
@@ -214,34 +206,7 @@
     <script src="sortComparators.js"></script>
     <script src="lib/cookie-2.1.2.js"></script>
 
-
-    <script>
-        var myApp = angular.module('myApp', []).controller('myCtrl', function($scope) {
-            $scope.textEnum = Object.freeze([
-                "Name",
-                "Start Date",
-                "Street",
-                "City",
-                "State",
-                "Zip",
-                "Phone",
-                "Year",
-                "ID"
-            ]);
-            $scope.fieldEnum = Object.freeze({
-                name: 0,
-                startDate: 1,
-                street: 2,
-                city: 3,
-                state: 4,
-                zip: 5,
-                phone: 6,
-                year: 7,
-                id: 8
-            });
-        });
-    </script>
-
+    <script src="MyCtrl.js"></script>
 </body>
 
 </html>
