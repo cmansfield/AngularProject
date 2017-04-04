@@ -466,8 +466,8 @@ function confirmUpdate() {
 function loadPage(page) {
     let studentIDs = [];
 
-    $("#modalHeader").text(`Loading students from the server`);
-    $('#myModal').modal('show');
+    //$("#modalHeader").text(`Loading students from the server`);
+    //$('#myModal').modal('show');
 
     // Get the list of student IDs from the server
     $.ajax({
@@ -568,7 +568,7 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
     // Code to get JSON from server
-    loadFromServer();
+    //loadFromServer();
     
     // Populate the years in the add students modal
     populateYears(); 
