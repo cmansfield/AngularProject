@@ -42,13 +42,13 @@
         <!-- End of Modal -->
 
         <!-- Add / Edit Modal -->
-        <div class="modal fade" id="addModal" role="dialog">
+        <div class="modal fade in" aria-hidden="false" style="display: block;" ng-show="showAddModal">
             <div class="modal-dialog modal-md">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="modalHeaderAdd"></h4>
+                        <h4 class="modal-title" id="modalHeaderAdd">Add a New Student</h4>
                     </div>
                     <div class="modal-body" id="modalBody">
 
@@ -125,7 +125,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default addChangeStudent" data-dismiss="modal">Confirm</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showAddModal = false">Close</button>
                     </div>
                 </div>
             </div>
@@ -164,13 +164,13 @@
             <!-- Buttons Row -->
             <div class="row">
                 <div class="col-xs-4 text-left">
-                    <button type="button" class="btn btn-default" id="refreshBtn" data-toggle="tooltip" data-placement="bottom" title="Restore last deleted student"><span class="glyphicon glyphicon-refresh"></button>
-                    <button type="button" class="btn btn-default" id="addNewBtn" data-toggle="tooltip" data-placement="bottom" title="Add a new student"><span class="glyphicon glyphicon-plus"></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Restore last deleted student"><span class="glyphicon glyphicon-refresh"></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Add a new student" ng-click="showAddModal = !showAddModal;"><span class="glyphicon glyphicon-plus"></button>
                 </div>
 
                 <div class="col-xs-4 text-center">
-                    <button type="button" class="btn btn-default" id="pageLeftBtn" data-toggle="tooltip" data-placement="bottom" title="Page Left" ng-click="pageChange(-1)"><span class="glyphicon glyphicon-chevron-left"></button>
-                    <button type="button" class="btn btn-default" id="pageRightBtn" data-toggle="tooltip" data-placement="bottom" title="Page Right" ng-click="pageChange(1)"><span class="glyphicon glyphicon-chevron-right"></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Page Left" ng-click="pageChange(-1)"><span class="glyphicon glyphicon-chevron-left"></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Page Right" ng-click="pageChange(1)"><span class="glyphicon glyphicon-chevron-right"></button>
                 </div>
 
                 <div class="col-xs-4 text-right">

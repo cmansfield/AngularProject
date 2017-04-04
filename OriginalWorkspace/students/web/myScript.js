@@ -568,7 +568,7 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
     // Code to get JSON from server
-    //loadFromServer();
+    loadFromServer();
     
     // Populate the years in the add students modal
     populateYears(); 

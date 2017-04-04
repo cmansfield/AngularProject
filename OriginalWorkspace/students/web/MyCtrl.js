@@ -18,6 +18,7 @@ myApp.controller('myCtrl', function($scope, $http) {
         "ID"
     ]);
     $scope.isLoading = false;
+    $scope.showAddModal = false;
 
 
     $scope.loadPage = function(page) {
