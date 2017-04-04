@@ -6,6 +6,17 @@ myApp.controller('myCtrl', function($scope, $http) {
     $scope.paging = 10;
     $scope.page = 0;
     $scope.students = [];
+    $scope.crntStudent = {
+        "fname": "first",
+        "lname": "last",
+        "startDate": "3/12/93",
+        "street": "123 North Street",
+        "city": "SomeCity",
+        "state": "UT",
+        "zip": "1234567",
+        "phone": "123-4567",
+        "year": 1
+    }
     $scope.textEnum = Object.freeze([
         "Name",
         "Start Date",
@@ -17,8 +28,14 @@ myApp.controller('myCtrl', function($scope, $http) {
         "Year",
         "ID"
     ]);
+    $scope.studentYearEnum = Object.freeze([
+        "Freshman",
+        "Sophomore",
+        "Junior",
+        "Senior"
+    ]);
     $scope.isLoading = false;
-    $scope.showAddModal = false;
+    $scope.showEditModal = false;
 
 
     $scope.loadPage = function(page) {
@@ -69,6 +86,35 @@ myApp.controller('myCtrl', function($scope, $http) {
 
             $scope.loadPage($scope.page);
         }
+
+        $scope.editStudent = function(id) {
+
+            $scope.students.forEach((student) =>  {
+                if(student.id === id) { $scope.crntStudent = JSON.parse(JSON.stringify(student)); }
+            });
+
+            $scope.showEditModal = true;
+        }
+
+        $scope.confirmChanges = function() {
+
+            $http({
+
+                method : "PUT",
+                url : `https://cs3660-christopherm.c9users.io/api/v1/students/${$scope.crntStudent.id}.json`,
+                data: JSON.stringify($scope.crntStudent),
+                contentType: 'application/json'
+            }).then(function() { alert('Successfully updated');
+            }, function(err) {
+
+                console.log(`Failed to update student with ID: ${$scope.crntStudent.id}`);
+                console.log(err);
+            });
+
+            $scope.showEditModal = false;
+
+            $scope.loadPage($scope.page);
+        };
 
         $scope.isLoading = false;
     }
