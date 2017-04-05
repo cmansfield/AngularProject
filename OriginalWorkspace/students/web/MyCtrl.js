@@ -17,6 +17,7 @@ myApp.controller('myCtrl', function($scope, $http) {
         "phone": "123-4567",
         "year": 1
     }
+    $scope.delStudent = {};
     $scope.textEnum = Object.freeze([
         "Name",
         "Start Date",
@@ -117,6 +118,26 @@ myApp.controller('myCtrl', function($scope, $http) {
         };
 
         $scope.isLoading = false;
+    }
+
+    $scope.deleteStudent = function(id) {
+
+        $scope.students.forEach((student) =>  {
+            if(student.id === id) { $scope.delStudent = JSON.parse(JSON.stringify(student)); }
+        });
+
+        $http({
+
+            method : "DELETE",
+            url : `https://cs3660-christopherm.c9users.io/api/v1/students/${$scope.delStudent.id}.json`
+        }).then(function() {
+
+            $scope.loadPage($scope.page);
+        }, function(err) {
+
+            console.log(`Failed to delete student with ID: ${id}`);
+            console.log(err);
+        });
     }
 
 

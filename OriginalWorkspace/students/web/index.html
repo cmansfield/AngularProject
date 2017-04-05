@@ -201,8 +201,8 @@
                         <td>{{student.year}}</td>
                         <td>{{student.id}}</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-sm editStudent" id="{{student.id}}" data-toggle="tooltip" data-placement="bottom" title="Edit this student" ng-click="editStudent('0001')"><span class="glyphicon glyphicon-pencil"></button>
-                            <button type="button" class="btn btn-default btn-sm deleteStudent" id="{{student.id}}" data-toggle="tooltip" data-placement="bottom" title="Delete this student"><span class="glyphicon glyphicon-trash"></button>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit this student" ng-click="editStudent(student.id)"><span class="glyphicon glyphicon-pencil"></button>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete this student" ng-click="deleteStudent(student.id)"><span class="glyphicon glyphicon-trash"></button>
                         </td>
                     </tr>
                 </tbody>
