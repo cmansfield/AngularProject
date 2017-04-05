@@ -50,17 +50,17 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="modalHeaderAdd">Edit Student</h4>
                     </div>
-                    <div class="modal-body" id="modalBody">
+                    <div class="modal-body">
 
                         <!-- Textbox for first and last name -->
                         <form class="form-inline row">
                             <div class="form-group col-md-10">
                                 <div class="col-md-5">
-                                    <label for="fNameInput" class="">First Name</label>
+                                    <label class="">First Name</label>
                                     <input type="text" class="form-control" aria-describedby="nameHelp" placeholder="Enter Name" ng-model="crntStudent.fname">
                                 </div>
                                 <div class="col-md-5">
-                                    <label for="lNameInput" class="">Last Name</label>
+                                    <label class="">Last Name</label>
                                     <input type="text" class="form-control" aria-describedby="nameHelp" placeholder="Enter Name" ng-model="crntStudent.lname">
                                 </div>
                             </div>
@@ -72,11 +72,11 @@
                         <form class="form-inline row">
                             <div class="form-group col-md-10">
                                 <div class="col-md-5">
-                                    <label for="startDateInput" class="">Start Date</label>
+                                    <label class="">Start Date</label>
                                     <input class="form-control" placeholder="mm/dd/yy" ng-model="crntStudent.startDate">
                                 </div>
                                 <div class="col-md-5">
-                                    <label for="phoneInput" class="">Telephone</label>
+                                    <label class="">Telephone</label>
                                     <input class="form-control" placeholder="(555)555-5555" ng-model="crntStudent.phone">
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                         <form class="row">
                             <div class="form-group col-md-8">
                                 <div class="col-sm-8">
-                                <label for="addressInput">Address</label>
+                                <label>Address</label>
                                 <input type="text" class="form-control" placeholder="Enter Street" ng-model="crntStudent.street">
                                 </div>
                             </div>
@@ -98,15 +98,15 @@
                         <form class="form-inline row">
                             <div class="form-group col-md-12">
                                 <div class="col-sm-4">
-                                    <label for="cityInput" >City</label>
+                                    <label>City</label>
                                     <input class="form-control" type="text" placeholder="Enter City" ng-model="crntStudent.city">
                                 </div>
                                 <div class="col-sm-4">
-                                    <label for="stateInput">State</label>
+                                    <label>State</label>
                                     <input class="form-control" type="text" placeholder="Enter State" ng-model="crntStudent.state">
                                 </div>
                                 <div class="col-sm-3">
-                                    <label for="zipInput">Zip</label>
+                                    <label>Zip</label>
                                     <input class="form-control" type="text" placeholder="Enter Zip" ng-model="crntStudent.zip">
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="modalTitle"></h4>
                     </div>
-                    <div class="modal-body" id="modalBody">
+                    <div class="modal-body">
 
                         <p id="modalText">Student Data</p>
 
@@ -165,13 +165,13 @@
             <!-- Buttons Row -->
             <div class="row">
                 <div class="col-xs-4 text-left">
-                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Restore last deleted student"><span class="glyphicon glyphicon-refresh"></button>
-                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Add a new student"><span class="glyphicon glyphicon-plus"></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Restore last deleted student" ng-click="restoreStudent()"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Add a new student"><span class="glyphicon glyphicon-plus"></span></button>
                 </div>
 
                 <div class="col-xs-4 text-center">
-                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Page Left" ng-click="pageChange(-1)"><span class="glyphicon glyphicon-chevron-left"></button>
-                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Page Right" ng-click="pageChange(1)"><span class="glyphicon glyphicon-chevron-right"></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Page Left" ng-click="pageChange(-1)"><span class="glyphicon glyphicon-chevron-left"></span></button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Page Right" ng-click="pageChange(1)"><span class="glyphicon glyphicon-chevron-right"></span></button>
                 </div>
 
                 <div class="col-xs-4 text-right">
@@ -201,8 +201,8 @@
                         <td>{{student.year}}</td>
                         <td>{{student.id}}</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit this student" ng-click="editStudent(student.id)"><span class="glyphicon glyphicon-pencil"></button>
-                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete this student" ng-click="deleteStudent(student.id)"><span class="glyphicon glyphicon-trash"></button>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit this student" ng-click="editStudent(student.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete this student" ng-click="deleteStudent(student.id)"><span class="glyphicon glyphicon-trash"></span></button>
                         </td>
                     </tr>
                 </tbody>

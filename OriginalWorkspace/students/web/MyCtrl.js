@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp', []);
+let myApp = angular.module('myApp', []);
 
 myApp.controller('myCtrl', function($scope, $http) {
 
@@ -16,7 +16,7 @@ myApp.controller('myCtrl', function($scope, $http) {
         "zip": "1234567",
         "phone": "123-4567",
         "year": 1
-    }
+    };
     $scope.delStudent = {};
     $scope.textEnum = Object.freeze([
         "Name",
@@ -69,13 +69,11 @@ myApp.controller('myCtrl', function($scope, $http) {
                 }, function(err) {
 
                     console.log(`Failed to get student with ID: ${id}`);
-                    console.log(err);
                 });
             }
         }, function errFunc(err) {
 
             console.log('Failed to get list from the server');
-            console.log(err);
         });
 
         $scope.pageChange = function(page) {
@@ -86,7 +84,7 @@ myApp.controller('myCtrl', function($scope, $http) {
             if($scope.students.length < $scope.paging && page > 0) $scope.page -= page;
 
             $scope.loadPage($scope.page);
-        }
+        };
 
         $scope.editStudent = function(id) {
 
@@ -95,7 +93,7 @@ myApp.controller('myCtrl', function($scope, $http) {
             });
 
             $scope.showEditModal = true;
-        }
+        };
 
         $scope.confirmChanges = function() {
 
@@ -109,7 +107,6 @@ myApp.controller('myCtrl', function($scope, $http) {
             }, function(err) {
 
                 console.log(`Failed to update student with ID: ${$scope.crntStudent.id}`);
-                console.log(err);
             });
 
             $scope.showEditModal = false;
@@ -118,7 +115,7 @@ myApp.controller('myCtrl', function($scope, $http) {
         };
 
         $scope.isLoading = false;
-    }
+    };
 
     $scope.deleteStudent = function(id) {
 
@@ -136,9 +133,30 @@ myApp.controller('myCtrl', function($scope, $http) {
         }, function(err) {
 
             console.log(`Failed to delete student with ID: ${id}`);
-            console.log(err);
         });
-    }
+    };
+
+    $scope.restoreStudent = function() {
+
+        if(angular.equals($scope.delStudent, {})) return;
+
+        console.log($scope.delStudent);
+
+        $http({
+
+            method : "POST",
+            url : `https://cs3660-christopherm.c9users.io/api/v1/students`,
+            data: JSON.stringify($scope.delStudent),
+            contentType: 'application/json'
+        }).then(function() {
+
+            $scope.delStudent = {};
+            $scope.loadPage($scope.page);
+        }, function(err) {
+
+            console.log(`Failed to restore student with ID: ${$scope.delStudent.id}`);
+        });
+    };
 
 
     $scope.loadPage(0);
