@@ -37,8 +37,11 @@ I am only planning on making changes to the following files:
 <li><strike>Complete Markdown for the AngularProject</strike></li>
 <li><strike>Download jQuery project from c9</strike></li>
 <li><strike>Import project into WebStorm</strike></li>
-<li>Learn Material</li>
-<li>Breakdown last two milestones into smaller goals</li>
 <li>Convert boostrap to Material</li>
-<li>Angularize all jQuery</li>
+<li><strike>Angularize all jQuery</strike></li>
+<li><strike>Get Nodejs working on my local machine</strike></li>
+<li><strike>Add Colors</strike></li>
+<li><strike>Add nconf</strike></li>
+<li><strike>Add Winston</strike></li>
+<li>Setup MongoDB</li>
 </ol>
