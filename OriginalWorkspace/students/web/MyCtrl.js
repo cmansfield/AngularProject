@@ -6,17 +6,18 @@ myApp.controller('myCtrl', function($scope, $http) {
     $scope.paging = 10;
     $scope.page = 0;
     $scope.students = [];
-    $scope.crntStudent = {
-        "fname": "first",
-        "lname": "last",
-        "startDate": "3/12/93",
-        "street": "123 North Street",
-        "city": "SomeCity",
-        "state": "UT",
-        "zip": "1234567",
-        "phone": "123-4567",
+    $scope.templateStudent = {
+        "fname": "",
+        "lname": "",
+        "startDate": "",
+        "street": "",
+        "city": "",
+        "state": "",
+        "zip": "",
+        "phone": "",
         "year": 1
     };
+    $scope.crntStudent = JSON.parse(JSON.stringify($scope.templateStudent));
     $scope.delStudent = {};
     $scope.textEnum = Object.freeze([
         "Name",
@@ -37,6 +38,7 @@ myApp.controller('myCtrl', function($scope, $http) {
     ]);
     $scope.isLoading = false;
     $scope.showEditModal = false;
+    $scope.showAddModal = false;
 
 
     $scope.loadPage = function(page) {
@@ -110,6 +112,32 @@ myApp.controller('myCtrl', function($scope, $http) {
             });
 
             $scope.showEditModal = false;
+
+            $scope.loadPage($scope.page);
+        };
+
+        $scope.newStudent = function() {
+
+            $scope.crntStudent = JSON.parse(JSON.stringify($scope.templateStudent))
+
+            $scope.showAddModal = true;
+        };
+
+        $scope.confirmAdd = function() {
+
+            $http({
+
+                method : "POST",
+                url : `http://localhost:3000/api/v1/students`,
+                data: JSON.stringify($scope.crntStudent),
+                contentType: 'application/json'
+            }).then(function() { alert(`Successfully created student ${$scope.crntStudent.fname} ${$scope.crntStudent.lname}`);
+            }, function(err) {
+
+                console.log(`Failed to create new student ${$scope.crntStudent.fname} ${$scope.crntStudent.lname}`);
+            });
+
+            $scope.showAddModal = false;
 
             $scope.loadPage($scope.page);
         };
