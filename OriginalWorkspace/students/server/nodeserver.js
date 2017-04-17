@@ -17,7 +17,8 @@ var compression = require('compression');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var cors = require('cors')
+var cors = require('cors');
+var colors = require('colors');
 
 //create express app
 var app = express();
@@ -36,7 +37,6 @@ app.use(bodyParser.json());
 
 app.use(favicon(WEB + '/test/favicon.ico'));
 
-
 // =====================================================================
 //REST API calls go here.
 // AKA: REST end points
@@ -49,7 +49,7 @@ app.post('/api/v1/students', function(req, res) {
     
     fs.readdir(__dirname + '/students', function(err, files) {
         if (err) {
-            console.log('Error getting file list');
+            console.log('Error getting file list'.red);
             return null;
         }
         
@@ -86,7 +86,7 @@ app.put('/api/v1/students/:id.json', function(req, res) {
     var data = JSON.stringify(req.body, null, 2);
 
     fs.writeFile(`${__dirname}/students/${id}.json`, data, 'utf8', function(err) {
-        if (err) throw err;
+        if (err) console.log(`Unable to update ${id}.json`.red);
 
         res.status(204);
     });
@@ -128,9 +128,9 @@ app.get('*', function(req, res) {
 var server = app.listen('3000', '127.0.0.1');
 
 function gracefullShutdown() {
-    console.log('\nStarting Shutdown');
+    console.log('\nStarting Shutdown'.yellow);
     server.close(function() {
-        console.log('\nShutdown Complete');
+        console.log('\nShutdown Complete'.yellow);
     });
 }
 
