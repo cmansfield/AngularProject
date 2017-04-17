@@ -2,12 +2,6 @@
 
 console.log('Loading Server');
 
-// __dirname is the loction to this folder, but I want it to goto the web folder
-const WEB = __dirname.replace('server', 'web');
-
-// '/home/ubuntu/workspace/FinalProject_v1/students'
-const DIR_STUDENTS = __dirname.replace('/server', '');
-
 //load main modules
 var express = require('express');
 
@@ -19,6 +13,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var cors = require('cors');
 var colors = require('colors');
+var nconf = require('nconf');
 
 //create express app
 var app = express();
@@ -35,7 +30,19 @@ app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json 
 app.use(bodyParser.json());
 
-app.use(favicon(WEB + '/test/favicon.ico'));
+
+nconf.argv()
+    .env()
+    .file({ file: 'config.json' });
+nconf.set('database:host', '127.0.0.1');
+nconf.set('database:port', 3000);
+// __dirname is the loction to this folder, but I want it to goto the web folder
+nconf.set('WebDir', __dirname.replace('server', 'web'));
+// '/home/ubuntu/workspace/FinalProject_v1/students'
+nconf.set('StudentDir', __dirname.replace('/server', ''));
+
+
+app.use(favicon(nconf.get('WebDir') + '/test/favicon.ico'));
 
 // =====================================================================
 //REST API calls go here.
@@ -117,15 +124,15 @@ app.get('/api/v1/students.json', function(req, res) {
 // =====================================================================
 
 //traditional webserver stuff
-app.use(express.static(WEB)); //express is serving static files as if it were Apache
-app.use(express.static(DIR_STUDENTS));
+app.use(express.static(nconf.get('WebDir'))); //express is serving static files as if it were Apache
+app.use(express.static(nconf.get('StudentDir')));
 app.get('*', function(req, res) {
-    res.status(404).sendFile(WEB + '/404.html');
+    res.status(404).sendFile(nconf.get('WebDir') + '/404.html');
 });
 
 //process.env.PORT
 //process.env.IP
-var server = app.listen('3000', '127.0.0.1');
+var server = app.listen(nconf.get('database:port'), nconf.get('database:host'));
 
 function gracefullShutdown() {
     console.log('\nStarting Shutdown'.yellow);
