@@ -39,6 +39,7 @@ myApp.controller('myCtrl', function($scope, $http) {
     $scope.isLoading = false;
     $scope.showEditModal = false;
     $scope.showAddModal = false;
+    $scope.showTable = true;
 
 
     $scope.loadPage = function(page) {

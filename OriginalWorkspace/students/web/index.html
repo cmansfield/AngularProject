@@ -248,13 +248,13 @@
                 </div>
 
                 <div class="col-xs-4 text-right">
-                    <button type="button" class="btn btn-default" id="tileBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Tile Veiw">Tiles</button>
-                    <button type="button" class="btn btn-default" id="tableBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Table Veiw">Table</button>
+                    <button type="button" class="btn btn-default" id="tileBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Tile Veiw" ng-click="showTable = false">Tiles</button>
+                    <button type="button" class="btn btn-default" id="tableBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Table Veiw" ng-click="showTable = true">Table</button>
                 </div>
             </div>
             <br>
 
-            <table class="table table-striped table-bordered" id="table">
+            <table class="table table-striped table-bordered" ng-show="showTable">
                 <thead>
                     <tr>
                         <th class="sort" id="{{x}}" ng-repeat="x in textEnum">{{x}}</th>
