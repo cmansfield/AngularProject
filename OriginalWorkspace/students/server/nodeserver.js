@@ -123,7 +123,9 @@ app.get('*', function(req, res) {
     res.status(404).sendFile(WEB + '/404.html');
 });
 
-var server = app.listen(process.env.PORT, process.env.IP);
+//process.env.PORT
+//process.env.IP
+var server = app.listen('3000', '127.0.0.1');
 
 function gracefullShutdown() {
     console.log('\nStarting Shutdown');

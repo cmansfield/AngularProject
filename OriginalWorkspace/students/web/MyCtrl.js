@@ -45,9 +45,9 @@ myApp.controller('myCtrl', function($scope, $http) {
         $scope.students = [];
 
         $http({
-
+            //https://cs3660-christopherm.c9users.io
             method : "GET",
-            url : "https://cs3660-christopherm.c9users.io/api/v1/students.json"
+            url : "http://localhost:3000/api/v1/students.json"
         }).then(function(res) {
 
             let studentIDs = res.data;
@@ -60,7 +60,7 @@ myApp.controller('myCtrl', function($scope, $http) {
                 $http({
 
                     method : "GET",
-                    url : `https://cs3660-christopherm.c9users.io/api/v1/students/${id}.json`
+                    url : `http://localhost:3000/api/v1/students/${id}.json`
                 }).then(function(result) {
 
                     let value = JSON.parse(result.data);
@@ -100,7 +100,7 @@ myApp.controller('myCtrl', function($scope, $http) {
             $http({
 
                 method : "PUT",
-                url : `https://cs3660-christopherm.c9users.io/api/v1/students/${$scope.crntStudent.id}.json`,
+                url : `http://localhost:3000/api/v1/students/${$scope.crntStudent.id}.json`,
                 data: JSON.stringify($scope.crntStudent),
                 contentType: 'application/json'
             }).then(function() { alert('Successfully updated');
@@ -126,7 +126,7 @@ myApp.controller('myCtrl', function($scope, $http) {
         $http({
 
             method : "DELETE",
-            url : `https://cs3660-christopherm.c9users.io/api/v1/students/${$scope.delStudent.id}.json`
+            url : `http://localhost:3000/api/v1/students/${$scope.delStudent.id}.json`
         }).then(function() {
 
             $scope.loadPage($scope.page);
@@ -145,7 +145,7 @@ myApp.controller('myCtrl', function($scope, $http) {
         $http({
 
             method : "POST",
-            url : `https://cs3660-christopherm.c9users.io/api/v1/students`,
+            url : `http://localhost:3000/api/v1/students`,
             data: JSON.stringify($scope.delStudent),
             contentType: 'application/json'
         }).then(function() {
