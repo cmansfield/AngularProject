@@ -271,7 +271,7 @@
                         <td>{{student.state}}</td>
                         <td>{{student.zip}}</td>
                         <td>{{student.phone}}</td>
-                        <td>{{student.year}}</td>
+                        <td>{{studentYearEnum[student.year - 1]}}</td>
                         <td>{{student.id}}</td>
                         <td>
                             <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit this student" ng-click="editStudent(student.id)"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -281,12 +281,29 @@
                 </tbody>
             </table>
 
-            <div id="tileArea"></div>
-
+            <!-- Tile Template -->
+            <div class="row" ng-show="!showTable">
+                <div ng-repeat="student in students">
+                    <div class="panel panel-default student-panels col-md-3">
+                        <div class="tiled-panel-heading panel-heading text-center">
+                            <h4>{{student.fname}} {{student.lname}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                <strong>Phone: </strong>{{student.phone}}<br>
+                                <strong>Year: </strong>{{studentYearEnum[student.year - 1]}}<br>
+                                <strong>Start Date: </strong>{{student.startDate}}<br>
+                                <strong>Address: </strong>{{student.street}}, {{student.city}}, {{student.state}} {{student.zip}}
+                            </p>
+                        </div>
+                    </div>      <!-- End of Panel -->
+                    <!--<div class="col-md-1"></div>-->
+                </div>
+            </div>      <!-- End of Row -->
         </div>
     </div>
 
-    <!-- jQuery -->
+    <!-- jQuery for only Bootstrap -->
     <script src="lib/jquery-1.12.4.min.js"></script>
 
     <!-- Latest compiled JavaScript -->

@@ -14,6 +14,22 @@
     src: url('lib/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('lib/fonts/glyphicons-halflings-regular.woff') format('woff'), url('lib/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('lib/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
+.student-panels.col-md-3 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.student-panels {
+    max-width: 15em;
+    height: 15em;
+    margin: .80em;
+}
+
+.tiled-panel-heading {
+    padding:  .25rem;
+    border-top-right-radius: 5px!important;
+    border-top-left-radius: 5px!important;
+}
 
 .container h2 {
     color:cadetblue;
