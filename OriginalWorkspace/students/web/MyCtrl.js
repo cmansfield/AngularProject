@@ -1,7 +1,15 @@
 
-let myApp = angular.module('myApp', []);
 
-myApp.controller('myCtrl', function($scope, $http) {
+let app = angular.module('app', [])
+
+
+app.directive('studentModal', function() {
+    return {
+        templateUrl: 'studentModal.html'
+    };
+});
+
+app.controller('ctrl', function($scope, $http) {
 
     $scope.paging = 10;
     $scope.page = 0;

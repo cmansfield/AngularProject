@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
+    <div ng-app="app" ng-controller="ctrl">
 
         <!-- Add Modal -->
         <div class="modal fade in" aria-hidden="false" style="display: block;" ng-show="showAddModal">
@@ -121,7 +121,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="modalHeaderAdd">Edit Student</h4>
+                        <h4 class="modal-title">Edit Student</h4>
                     </div>
                     <div class="modal-body">
 
@@ -161,8 +161,8 @@
                         <form class="row">
                             <div class="form-group col-md-8">
                                 <div class="col-sm-8">
-                                <label>Address</label>
-                                <input type="text" class="form-control" placeholder="Enter Street" ng-model="crntStudent.street">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" placeholder="Enter Street" ng-model="crntStudent.street">
                                 </div>
                             </div>
                         </form>
@@ -262,8 +262,6 @@
                 </thead>
                 <tbody id="tableArea">
                     <tr ng-repeat="student in students">
-                        <!--| filter : { Id: '!' + x.fname}-->
-                        <!--ng-repeat="(key,value) in x"-->
                         <td>{{student.fname + ' ' + student.lname}}</td>
                         <td>{{student.startDate}}</td>
                         <td>{{student.street}}</td>
