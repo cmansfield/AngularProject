@@ -248,8 +248,8 @@
                 </div>
 
                 <div class="col-xs-4 text-right">
-                    <button type="button" class="btn btn-default" id="tileBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Tile Veiw" ng-click="showTable = false">Tiles</button>
-                    <button type="button" class="btn btn-default" id="tableBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Table Veiw" ng-click="showTable = true">Table</button>
+                    <button type="button" class="btn btn-default" id="tileBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Tile Veiw" ng-click="showTable = false" ng-disabled="!showTable">Tiles</button>
+                    <button type="button" class="btn btn-default" id="tableBtn" data-toggle="tooltip" data-placement="bottom" title="Switch to the Table Veiw" ng-click="showTable = true" ng-disabled="showTable">Table</button>
                 </div>
             </div>
             <br>
