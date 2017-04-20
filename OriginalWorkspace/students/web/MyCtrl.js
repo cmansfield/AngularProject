@@ -28,6 +28,17 @@ app.controller('ctrl', function($scope, $http) {
     };
     $scope.crntStudent = JSON.parse(JSON.stringify($scope.templateStudent));
     $scope.delStudent = {};
+    $scope.fieldEnum = Object.freeze({
+        name: 0,
+        startDate: 1,
+        street: 2,
+        city: 3,
+        state: 4,
+        zip: 5,
+        phone: 6,
+        year: 7,
+        id: 8
+    });
     $scope.textEnum = Object.freeze([
         "Name",
         "Start Date",
@@ -45,6 +56,7 @@ app.controller('ctrl', function($scope, $http) {
         "Junior",
         "Senior"
     ]);
+    $scope.ascending = false;
     $scope.isLoading = false;
     $scope.showEditModal = false;
     $scope.showAddModal = false;
@@ -194,6 +206,60 @@ app.controller('ctrl', function($scope, $http) {
 
             console.log(`Failed to restore student with ID: ${$scope.delStudent.id}`);
         });
+    };
+
+    $scope.sort = function(headerName) {
+
+        let prop = '';
+        let sortFunc = function(a, b) {
+
+            if(a[prop].toLowerCase() < b[prop].toLowerCase()) return -1;
+            if(a[prop].toLowerCase() > b[prop].toLowerCase()) return 1;
+            return 0;
+        };
+
+        if($scope.ascending) {
+
+            sortFunc = function(a, b) {
+
+                if(a[prop].toLowerCase() > b[prop].toLowerCase()) return -1;
+                if(a[prop].toLowerCase() < b[prop].toLowerCase()) return 1;
+                return 0;
+            };
+
+            $scope.ascending = false;
+        }
+        else { $scope.ascending = true; }
+
+        switch(headerName) {
+            case $scope.textEnum[$scope.fieldEnum.name]:
+                prop = 'lname';
+                break;
+            case $scope.textEnum[$scope.fieldEnum.startDate]:
+                prop = 'startDate';
+                break;
+            case $scope.textEnum[$scope.fieldEnum.city]:
+                prop = 'city';
+                break;
+            case $scope.textEnum[$scope.fieldEnum.state]:
+                prop = 'state';
+                break;
+            case $scope.textEnum[$scope.fieldEnum.zip]:
+                prop = 'zip';
+                sortFunc = (a,b) => b[prop] - a[prop];
+                break;
+            case $scope.textEnum[$scope.fieldEnum.year]:
+                prop = 'year';
+                sortFunc = (a,b) => b[prop] - a[prop];
+                break;
+            case $scope.textEnum[$scope.fieldEnum.id]:
+                prop = 'id';
+                break;
+            default:
+                prop = 'id';
+        }
+
+        $scope.students.sort(sortFunc);
     };
 
 

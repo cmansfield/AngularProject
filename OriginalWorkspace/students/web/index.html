@@ -257,7 +257,7 @@
             <table class="table table-striped table-bordered" ng-show="showTable">
                 <thead>
                     <tr>
-                        <th class="sort" id="{{x}}" ng-repeat="x in textEnum">{{x}}</th>
+                        <th id="{{x}}" ng-repeat="x in textEnum" ng-click="sort(x)">{{x}}</th>
                     </tr>
                 </thead>
                 <tbody id="tableArea">
