@@ -5,6 +5,7 @@ let app = angular.module('app', [])
 
 app.directive('studentModal', function() {
     return {
+        restrict: 'E',
         templateUrl: 'studentModal.html'
     };
 });
