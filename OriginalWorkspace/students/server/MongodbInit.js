@@ -1,5 +1,5 @@
 
-const students = require('./students.json');
+const students = require('./Data/students.json');
 let mongo = require('mongodb').MongoClient;
 let ObjectID = require('mongodb').ObjectID;
 

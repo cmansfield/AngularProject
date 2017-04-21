@@ -122,6 +122,7 @@ app.delete('/api/v1/students/:id.json', function(req, res) {
 // List
 // https://cs3660-christopherm.c9users.io/api/v1/students.json
 app.get('/api/v1/students.json', function(req, res) {
+
     fs.readdir(__dirname + '/students', function(err, files) {
         if (err) res.status(500);
 
@@ -136,6 +137,7 @@ app.get('/api/v1/students.json', function(req, res) {
 app.use(express.static(nconf.get('WebDir'))); //express is serving static files as if it were Apache
 app.use(express.static(nconf.get('StudentDir')));
 app.get('*', function(req, res) {
+
     res.status(404).sendFile(nconf.get('WebDir') + '/404.html');
 });
 
@@ -144,6 +146,7 @@ app.get('*', function(req, res) {
 var server = app.listen(nconf.get('database:port'), nconf.get('database:host'));
 
 function gracefullShutdown() {
+
     loggerWin.info('\nStarting Shutdown'.yellow);
     server.close(function() {
         loggerWin.info('\nShutdown Complete'.yellow);
